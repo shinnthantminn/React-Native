@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "todo",
+    "slug": "todo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/image/goal.png",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#1e085a",
+    "splash": {
+      "image": "./assets/image/goal.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1e085a"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/image/goal.png",
+        "backgroundColor": "#1e085a"
+      },
+      "package": "com.shinn64.todo"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3d54ac37-e236-41bb-ba71-cdfc5d7489f7"
+      }
+    }
+  }
+}

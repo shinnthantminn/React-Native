@@ -1,0 +1,21 @@
+IOS မှာ Text Ui တွေက တော့ BorderRadius မရပါဘူး ဒါကိုဖြေရှင်းဖို့ View ကို Warp ပြီးတော့မှ BorderRadius ထားပေးရပါတယ်
+
+ပြီတော့ View မှာ Color ကို တစ်ခုခုသတ်မှတ်ထားရင် View အတွင်း က Text ကို Color သတ်ရောက်မှုမရှိပါဘူး Style Inhrintent မရှိပါဘူး
+
+Scroll လို့ ရအောင် ကို Scroll ခြင်တဲ့ Element ကို ScrollView နဲ့ Warp လို့ ရပါတယ် ဒါပေမဲ့ ScrollView ကတော့ flex 1 တို့လို သတ်ရောက်မှု ရှိမှာ မဟုတ်ပါဘူး 
+
+ScrollView ကတော့ IOS မှာ ဆို ရင် warp ထားတဲ့ Elements က scroll လို့ ရမရ မကြည့် တော့ ပဲ အမြဲ Bounce effect ရနေမှာ ဖြစ်ပါတယ် alwaysBounceVertical ကို false ထားပေးရမှာပါ
+
+ScrollView ကတော့ user device မှာ မဆန့်တဲ့ စာတွေ တစ်ခြားသေား Screen နဲ့ မဆန့်တဲ့ အရာ တွေထားဖို့ အတွက်သင့်လျှော်ပေမဲ့ List ကို Map ပတ်ပြီးပြမဲ့ ဟာအတွက်ဆိုရင်တော့ ScrollView ကတော့ မသင့်တော်ပါဘူးဘာကြောင်လည်းဆိုတော့ သူက render အကုန်လုံကို မြင်ရရမမြင်ရရ render လုပ်ပြနေတာ မို့လို့ Performance issues ရှိပါတယ် ScrollView က Limit ရှိတဲ့ ဟာတွေ Screen နဲ့ မဆန့်တဲ့ ဟာတွေအတွက်ပဲ သင့်တော်ပါတယ် 
+
+အဲ့ အတွက် ဖြေရှင်းခြင်ရင် FlatList ဆိုတာ ရှိပါတယ် သူကလည်း Scrollable ဖြစ်ပါတယ် ဒါပေမဲ့ ScrollView ထက်သာတာ ကတော့ user မြင်ရတဲ့ ကောင်ကို ပဲ Render ချ ပေးတာကြောင်မို့လို့ ပိုပြီးတော့ Performance ကောင်းပါတယ် ပြီးတော့ သူက Map လိုပဲ List တွေကို loop ပတ်ပြီးချ ပြတဲ့ အခါမှ Performance အရမ်းကောင်းပါတယ် FlatList က key လို ပါတယ် ဒါပေမဲ့ အဲ့ Key ကို Loop ပတ်တဲ့ Object ထဲမှာ ပါရင်လည်း ရပါတယ် API Data အနေနဲ့ Key မပါရင်လည်း keyExtractor props နဲ့ ကိုယ်ကြိုက်တာကို Key လုပ်လို့ရပါသေးတယ် FlatList ကလည်း ScrollView မှာ ပေးလို့ရတဲ့ ဟာမှန်သမျှ နီပါ props တွေပေးလို့ရပါတယ်
+
+onPress မရတဲ့ Element တွေ မှာ Press လုပ် ခြင်ရင် Pressible ကို သုံးလို့ရပါတယ် အဲ့ Press မှာ Feedback ပေးခြင်ရင် Android အတွက် ဆို ရင် Android_ripple ဆို တဲ့ Props ရှိပါတယ် ios ဆို ရင် တော့ Pressible ရဲ့ Style props မှာ custom ရေးပေးရပါမယ်
+
+model လို ခြင်ရင် Model Components ကိို သုံးလို့ရပါတယ် ဒါပေမဲ့ အဲ့ကောင်က React Portal လို ပါပဲ သူမှာ Visible Props ရှိပါတယ် ပြီးတော့ အဲ့ ကောင်က Model ပေါ့်တာ ပြောက်တာ ကို လုပ်ပေးလို့ရပါတယ် AnimationType Props ကတော့ Model မှာ Default ပါတဲ့ Animation တွေကို ရှိပါတယ် Fade , Slice , None ဆို ပြီတော့ ရှိပါတယ် 
+
+image တွေကတော့ React Native မှာ Image Components ဆို ပြီးတော့ ရှိပါ သူက image တွေကို import လုပ်ပြီးထည့်လို့ရပါတယ််
+
+mobile တစ်ခု လုံးရဲ့ Screen ကို backgroundColor ပြောင်းခြင်ရင် expo ဆို app.json မှာ သွားပြောင်းလိုက်လို့ရပါတယ်
+
+React Native မှာ mobile StatusBar ရဲ့ Design ကို ပြင်ခြင်ရင် တော့ expo status bar ကထောက်ပန့်ပေးထားတဲ့ StatusBar Components ရဲ့ style ကို ပြောင်းပေးလို့ရပါတယ် 
