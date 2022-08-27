@@ -4,26 +4,24 @@
     "slug": "todo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/image/goal.png",
+    "icon": "./assets/image/icon.png",
     "userInterfaceStyle": "light",
-    "backgroundColor": "#1e085a",
+    "backgroundColor": "#fcb1b1",
     "splash": {
-      "image": "./assets/image/goal.png",
+      "image": "./assets/image/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#1e085a"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/image/goal.png",
+        "foregroundImage": "./assets/image/icon.png",
         "backgroundColor": "#1e085a"
       },
       "package": "com.shinn64.todo"

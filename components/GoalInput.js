@@ -1,84 +1,176 @@
+import { useState } from "react";
 import {
+  View,
+  Text,
+  Modal,
   StyleSheet,
   TextInput,
-  View,
-  Button,
-  Modal,
-  Image,
+  Pressable,
 } from "react-native";
-import { useState } from "react";
-import logo from "../assets/image/goal.png";
+import { FontAwesome } from "@expo/vector-icons";
+import uuid from "react-native-uuid";
 
-export default function GoalInput({ handleClick, visible, setModel }) {
-  const [text, setText] = useState("");
+const GoalInput = ({ show, handleModel, theme, onSubmit }) => {
+  const [error, setError] = useState(false);
+  const color = ["#2f89fc", "#28c7fa", "#f090d9", "#39bdc8", "#f0f696"];
 
-  const handleChange = (e) => {
-    setText((pre) => setText(e));
-  };
+  const [text, setText] = useState({
+    title: "",
+    goal: "",
+  });
 
-  const onClick = () => {
-    if (text.length > 0) {
-      handleClick(text);
-      setText("");
-      setModel();
+  const addGoal = () => {
+    if (text.title && text.goal) {
+      const data = {
+        ...text,
+        time: Date.now(),
+        id: uuid.v4(),
+        color: color[parseInt(Math.random() * 5)],
+      };
+      onSubmit(data);
+      setText({
+        title: "",
+        goal: "",
+      });
+      handleModel();
+    } else {
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
     }
   };
 
   return (
-    <Modal visible={visible} animationType="slide">
-      <View style={style.inputArea}>
-        {/* <Image source={logo} style={style.image} /> */}
-        <Image
-          source={require("../assets/image/goal.png")}
-          style={style.image}
-        />
-        <TextInput
-          style={style.input}
-          onChangeText={handleChange}
-          placeholder="Your Course goal"
-          value={text}
-        />
-        <View style={style.btnContainer}>
-          <View style={style.btn}>
-            <Button title="Cancel" color={"#f31282"} onPress={setModel} />
+    <>
+      <Modal visible={show} animationType="slide">
+        <View
+          style={[
+            style.container,
+            { backgroundColor: theme ? "#000" : "#fff" },
+          ]}
+        >
+          <View>
+            {error && (
+              <View style={style.ErrorAlert}>
+                <Text style={{ color: theme ? "#000" : "#fff" }}>
+                  Something was needed
+                </Text>
+                <Pressable
+                  onPress={() => {
+                    setError(false);
+                  }}
+                >
+                  <FontAwesome name="times" size={20} color="white" />
+                </Pressable>
+              </View>
+            )}
+            <View style={{ marginBottom: 10 }}>
+              <Text style={[style.text, { color: theme ? "#fff" : "#000" }]}>
+                Goal title
+              </Text>
+              <TextInput
+                style={[
+                  style.input,
+                  {
+                    borderColor: theme ? "#fff" : "#000",
+                    color: theme ? "#fff" : "#000",
+                  },
+                ]}
+                placeholder="Add title"
+                value={text.title}
+                onChangeText={(e) => setText((pre) => ({ ...pre, title: e }))}
+                placeholderTextColor={theme ? "#fff" : "#d4d4d8"}
+              />
+            </View>
+            <View style={{ marginBottom: 10 }}>
+              <Text style={[style.text, { color: theme ? "#fff" : "#000" }]}>
+                Enter your goal
+              </Text>
+              <TextInput
+                multiline={true}
+                numberOfLines={3}
+                value={text.goal}
+                onChangeText={(e) => setText((pre) => ({ ...pre, goal: e }))}
+                style={[
+                  style.input,
+                  {
+                    borderColor: theme ? "#fff" : "#000",
+                    color: theme ? "#fff" : "#000",
+                  },
+                  { textAlignVertical: "top", paddingTop: 10 },
+                ]}
+                placeholder="Enter your goal"
+                placeholderTextColor={theme ? "#fff" : "#d4d4d8"}
+              />
+            </View>
           </View>
-          <View style={style.btn}>
-            <Button title="Add Goal" color="#b180f0" onPress={onClick} />
+          <View style={style.btnContainer}>
+            <Pressable
+              android_ripple={{
+                color: theme ? "#ffffffaa" : "#000000aa",
+                radius: 33,
+              }}
+              onPress={handleModel}
+              style={[
+                style.btn,
+                { marginRight: 10, backgroundColor: "#fc5185" },
+              ]}
+            >
+              <Text style={{ color: "#fff" }}>Cancle</Text>
+            </Pressable>
+            <Pressable
+              onPress={addGoal}
+              android_ripple={{
+                color: theme ? "#ffffffaa" : "#000000aa",
+                radius: 38,
+              }}
+              style={[style.btn, { backgroundColor: "#28c7fa" }]}
+            >
+              <Text style={{ color: "#fff" }}>Add goal</Text>
+            </Pressable>
           </View>
         </View>
-      </View>
-    </Modal>
+      </Modal>
+    </>
   );
-}
+};
+
+export default GoalInput;
 
 const style = StyleSheet.create({
-  inputArea: {
-    alignItems: "center",
+  container: {
+    paddingTop: 10,
+    paddingHorizontal: 10,
     flex: 1,
     justifyContent: "center",
-    padding: 20,
-    backgroundColor: "#311b6b",
-  },
-  image: {
-    width: 100,
-    height: 100,
-    margin: 20,
   },
   input: {
-    width: "100%",
     borderWidth: 1,
-    borderColor: "#e4d0ff",
-    backgroundColor: "#e4d0ff",
-    color: "#120438",
-    borderRadius: 6,
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 10,
+    marginVertical: 6,
+  },
+  text: {
+    fontSize: 22,
+    fontWeight: "500",
   },
   btnContainer: {
     flexDirection: "row",
+    justifyContent: "flex-end",
   },
   btn: {
-    marginTop: 16,
-    width: 100,
-    marginRight: 10,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    paddingVertical: 5,
+    borderRadius: 5,
+  },
+  ErrorAlert: {
+    backgroundColor: "#fc5185",
+    flexDirection: "row",
+    padding: 10,
+    justifyContent: "space-between",
+    marginBottom: 16,
   },
 });
