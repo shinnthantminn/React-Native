@@ -1,0 +1,23 @@
+font ထည့်ခြင်တယ် ဆို ရင် Expo က Support ပေးတဲ့ expo-font ကို သုံပေးရပါတယ် သူမှာလည်းတစ်ခြားလို အပ်တဲ့ Package တစ်ခု ထက်ရှိပါသေးတယ် အဲ့ ဒါကတော့ အရင်တုန်ကတော့ expo-App-Loading ပါ စာလုပ်နေတုန်မှာ ပဲ မအေလိုး Expo က expo-App-Loading lib က deprecated ဖြစ်သွာပါပြီတဲ့ အဲ့ဒါကြောင် expo-splash-screen ကိုထပ်လုပ်လိုက်ရပါတယ်
+
+font ကို သုံးရင်တော့ 
+
+import { useFonts } from "expo-font";
+
+useFonts Hook ကို သုံးရပါတယ် ပြီးတော့ 
+
+  const [fontsLoaded] = useFonts({
+    "bold": require("./assets/Font/IBMPlexSansThai-Bold.ttf"),
+    "medium": require("./assets/Font/IBMPlexSansThai-Medium.ttf"),
+  });
+
+ကို သုံးခြင်တဲ့ Font ကို အဲ့လို ခေါ် ပေးလို့ ရပါတယ် Font ယူရင် သဘော တရားကတော့ async သဘော ပါ အဲ့ async ကပြီးတာလားမပြီးတာလားဆိုတာကို fontsLoaded က true false နဲ့ ပြန်ပေးပါတယ် အဲ့လို ပြန်ပေးနဲ့ အချိန်မှာ ပဲ ကျွန်တော် တို့ သုံးထားတဲ့ Font တွေ Load လုပ်တာမပြီးသေးပဲ သုံရင် App က crack သွားမှ ပါ ဒါကြောင် splash Screen ကို Load လုပ်တာမပြီးမခြင်ပြထားဖို့ အတွက် expo-splash-screen ကို သုံပါတယ် 
+expo-splash-screen ကတော့ အလုပ်နှစ်ခုပဲလုပ်ပါတယ် .preventAutoHideAsync() နဲ့ hideAsync(); ပါ 
+
+အလုပ်လုပ်ပုံကတော့ useEffect ကို သုံးပြီ preventAutoHideAsync နဲ့ splash ကို ပြထားပါတယ် ဒီ အချိန်မှာ ပဲ Function တစ်ခု ဆောက်ပြီးတော့ useCallBack နဲ့ အဲ့ Function ကို လိုအပ်မှ လုပ်အောင် warp ထားပါတယ် အဲ့ Function ကတော့ fontsLoaded ပြီးတာ ကိုဆောင်ပြီးတာကိုဆောင့်ပြီးတော့ hideAsync နဲ့ splash ကို ဖြောက်ပေးပါတယ် useCallBack နဲ့လို အပ်တဲ့ အချိန်ဆိုတာကတော့ fontsLoaded ပြောင်းလဲ တဲ့ အချိန်ပါ ပြီးတော့ အဲ့ Function ကို တော့ rootComponent ကို warp ထဲ မှာ View ရဲ့ Layout မှာ ထည့်ပေးရတာပါ ပြီးတော့ fontsLoaded မပြီးသေးပဲ နဲ့ အောက်က JSX တွေ Render မချ အောင်လည်း 
+
+  if(!fontsLoaded){
+    return null;
+  } 
+
+ဒီလိုကာထားရပါတယ်

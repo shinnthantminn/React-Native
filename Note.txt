@@ -1,0 +1,22 @@
+Shadow
+
+elevation ကတော့ Android မှာ သုံဖို့ အတွက် Shadow ချပေးတဲ့ Properties ပါ Android 
+မှာ ပဲ ရတာပါ Ios မှာ ဆို ရင်တော့ ShadowOpacity ShadowColor ShadowOffset ShadowRadius ဆိုပြီးတော့ ရှိပါတယ် ShadowColor ကတော့ အရောင်တွေသတ်မှတ်ပေးတာပါ ShadowOffset ကတော့ object တစ်ခု ပါ width height ဆို ပြီးတော့ သတ်မှတ်ပေးလို့ရပါတယ် width ကတော့ x ဝင်ရို ကို ပိုထားမလား height ကတော့ Y ဝင်ရိုးကို ပိုထူမလားလို့ သတ်မှတ်ပေးတာပဲ ဖြစ်ပါတယ် ShadowRadius ကတော့ Shadow expend ကို ပိုသတ်မှတ်ပေးတာပါ များလေပိုလေ ShadowOpacity ကတော့ Shadow ကို ထင်းခြင်တာ လား ဖြော့ခြင်တာလားကို သတ်မှတ်ပေးတာပါ
+
+TextInput 
+
+TextInput မှာ ကို ထည့်ခြင်တဲ့ စာလုံအရေအတွက်ကို maxLength နဲ့ သတ်မှတ်ပေးလို့ရပါတယ် TextInput နဲ့ ပတ်သတ်တဲ့ props တွေ အများကြီရှိပါတယ် KeyBoardType ကတော့ Keyboard မှာ ရိုက်ခိုင်းစေခြင်တဲ့ Text တွေကို ပြပေးပါတယ် ios မှာ ပဲ ရတဲ့ type တွေရှိပါသေးတယ် autoCapitalize ကတော့ text ကို autoCapitalize 
+ဖြစ်စေတာပါ autoCorrect ကတော့ text ကို autoComplete ဖြစ်စေမှုကို ရပ်တန့်စေပါတယ်
+
+overflow properties လည်းသုံးလို့ရပါတယ် web နဲ့ အတူတူပါပဲ
+
+Expo tool တွေကို install လုပ်ရင် Expo ကို သုံးပြီးလုပ်လို့ရပါတယ် expo i ဆို ပြီးတော့ ပါ ပိုပြီးတော့ကောင်းပါတယ် Fitting ဖြစ်တဲ့ Version ကို install လုပ်ပေးမှာ ပါ 
+
+**** Liner gradient သုံးခြင်ရင် Expo ကပေးထားတဲ့ Liner gradient ဆို ပြီ Package ကို သုံးရပါတယ် Liner gradient ကြည့် ရရန် ****
+
+ImageBackground ကတော့ Background Image ထည့်တာ ပါ source ထည်းကို
+image file path ထည့်ပေးရတာပါ သူ့မှာ ကတော့ resizeMode ဆိုတဲ့ props ကတော့ css backgroud origin လို ပါပဲ center contain cover repeat stretch ဆိုပြီးတော့ရှိပါတယ် သူ့မှာ ထူခြားတာ တစ်ခု ရှိပါသေးတယ် ImageBackground component ကို style ပေးခြင်ရင်တော့ style ရိုရို နဲ့ ပဲ ရေးလို့ရပါတယ်ဒါပေမဲ့ ထည့်ထားတဲ့ image ကိုပဲ style ပေးခြင်ရင်တော့ imageStyle နဲ့ပေးလို့ရပါတယ် သူကတော့ style နှစ်ခုပေးလို့ရတဲ့ ImageBackground တစ်ခု ပါပဲ အလုပ်လုပ်ပုံကတော့ Custom component လုပ်ထားတာပါ image components ကို View components warp ထားတဲ့ အတွက် view အတွက် style တစ်ခု image အတွက် style တစ်ခု နှစ်ခု ရပါတယ်
+
+Alert React Native ကတော့ Native တွေပြဖို့ အတွက်ကို Alert ဆိုတဲ့ components ကို Provide လုပ်ပေးထားပါတယ် သူ့ကတော့ prompt နဲ့ Alert ဆို ပြီးတော့ နှစ်ခု လုပ်လို့ရပါသေးတယ် alert ကတော့ permeter 4ခုထည့်ပေးရပါတယ် ပထမတစ်ခု ကတော့ Alert heading ပါ နောက်တစ်ခု ကတော့ Alter content ပါ နောက်တစ်ခု ကတော့ alter ရဲ့ button တွေကို array နဲ့ ပြပေးတာပါ array ထည်းမှာ တော့ text ရယ် style ရယ် onPress ဆိုတာပါပါတယ် text ကတော့ button text ပါ style ကတော့ အဲ့ Button ရဲ့ Style ပါ နောက် onPress ကတော့ အဲ့ Button နိပ်လိုက်ရင်ရလာမဲ့ Action function ပါ  
+
+**** SafeViewArea ကတော့ Notic တွေအောကကို မရောက်ဖို့ သုံးတာ ပါ Notic မရှိရင် တော့ StatusBar အောက်ကို ရောက်သွားမှာပါ ios မှာ ပဲ အလုပ်လုပ်တာပါ ****
