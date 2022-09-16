@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Color } from "./helper/StyleVariable";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
   const [numberChange, setNumberChange] = useState(null);
@@ -76,22 +77,25 @@ export default function App() {
   }
 
   return (
-    <LinearGradient
-      onLayout={layoutView}
-      colors={[Color.primary300, Color.secoundry100]}
-      end={{ x: 0.5, y: 1.0 }}
-      start={{ x: 0.5, y: 0.0 }}
-      style={styles.rootScreen}
-    >
-      <ImageBackground
+    <>
+      <StatusBar style="auto" />
+      <LinearGradient
+        onLayout={layoutView}
+        colors={[Color.primary300, Color.secoundry100]}
+        end={{ x: 0.5, y: 1.0 }}
+        start={{ x: 0.5, y: 0.0 }}
         style={styles.rootScreen}
-        source={require("./assets/Image/background.jpg")}
-        imageStyle={styles.image}
-        resizeMode="cover"
       >
-        <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+        <ImageBackground
+          style={styles.rootScreen}
+          source={require("./assets/Image/background.jpg")}
+          imageStyle={styles.image}
+          resizeMode="cover"
+        >
+          <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 }
 

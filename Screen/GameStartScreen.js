@@ -1,5 +1,15 @@
 import { useState } from "react";
-import { View, TextInput, StyleSheet, Alert, Text } from "react-native";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Alert,
+  Text,
+  Dimensions,
+  useWindowDimensions,
+  KeyboardAvoidingView,
+  ScrollView,
+} from "react-native";
 import PrimaryButton from "../Components/Button/PrimaryButton";
 import Title from "../Components/Other/Title";
 import { Color } from "../helper/StyleVariable";
@@ -7,6 +17,7 @@ import Card from "../Components/Other/Card";
 
 const GameStartScreen = ({ router }) => {
   const [enterText, setEnterText] = useState("");
+  const { height } = useWindowDimensions();
 
   const confirm = () => {
     const confirmText = parseInt(enterText);
@@ -26,36 +37,51 @@ const GameStartScreen = ({ router }) => {
     setEnterText("");
   };
 
+  console.log(height);
+
   return (
-    <View style={styles.rootContainer}>
-      <Title>Guess My Number</Title>
-      <Card>
-        <Text style={styles.intruction}>Enter a number</Text>
-        <TextInput
-          value={enterText}
-          style={styles.input}
-          maxLength={2}
-          keyboardType="number-pad"
-          onChangeText={(e) => setEnterText(e)}
-          autoCapitalize={false}
-          autoCorrect={false}
-        />
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <PrimaryButton onPress={reset}>Reset</PrimaryButton>
-          </View>
-          <View style={styles.button}>
-            <PrimaryButton onPress={confirm}>Confirm</PrimaryButton>
-          </View>
+    <ScrollView alwaysBounceVertical={height < 420 ? true : false}>
+      <KeyboardAvoidingView style={styles.screen} behavior="position">
+        <View
+          style={[styles.rootContainer, { marginTop: height < 420 ? 40 : 100 }]}
+        >
+          <Title>Guess My Number</Title>
+          <Card>
+            <Text style={styles.intruction}>Enter a number</Text>
+            <TextInput
+              value={enterText}
+              style={styles.input}
+              maxLength={2}
+              keyboardType="number-pad"
+              onChangeText={(e) => setEnterText(e)}
+              autoCapitalize={false}
+              autoCorrect={false}
+            />
+            <View style={styles.buttonContainer}>
+              <View style={styles.button}>
+                <PrimaryButton onPress={reset}>Reset</PrimaryButton>
+              </View>
+              <View style={styles.button}>
+                <PrimaryButton onPress={confirm}>Confirm</PrimaryButton>
+              </View>
+            </View>
+          </Card>
         </View>
-      </Card>
-    </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 
 export default GameStartScreen;
 
+// const deviceHeight = Dimensions.get("window").height; Dyanmic မရပါဘူး
+
+// console.log(deviceHeight);
+
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
   intruction: {
     color: Color.secoundry100,
     fontSize: 21,
@@ -63,7 +89,6 @@ const styles = StyleSheet.create({
   },
   rootContainer: {
     flex: 1,
-    marginTop: 100,
     alignItems: "center",
   },
   input: {

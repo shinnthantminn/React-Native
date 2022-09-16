@@ -1,0 +1,25 @@
+min max တွေ ကတော့ width နဲ့ height သတ်မှတ်ထားတဲ့ အခါမှာ responsive ဖြစ်အောင်လုပ်တဲ့ အခါ အရမ်းအရေးပါပါတယ် width ကို default static တစ်ခု သတ်မှတ်ထားပြီးတော့ အဲ့ ဒါ အဆန့်တဲ့ screen တွေမှာ max တို့ min တို့ ကို သုံးလို့ ရပါတယ်
+
+// exp
+
+title: {
+    fontSize: 18,
+    fontFamily: "bold",
+    textAlign: "center",
+    borderWidth: 2,
+    padding: 10,
+    color: "white",
+    maxWidth: "80%",
+    width: 300, // width 300 နဲ့ screen မှာ အဆင်ပြေရင် width 300 ပြပြီးတော့ အဆင်မပြေတော့ရင်တော့ maxWidth 80% ကို တော့ 300px နဲ့ မဆန့်တဲ့ Screen တွေမှာ ယူသွားမှာ ဖြစ်ပါတယ်
+    borderColor: "white",
+  },
+
+Dimensions API ကို သုံးပြီးတော့ user device ရဲ့ wdith တွေ height တွေကို သတ်မှတ်နိုင်ပါတယ် 
+
+Dimensions မှာ get နဲ့ set method တွေမှာ get မှာ screen နဲ့ window ဆိုပြီးတော့ ရှိပါတယ် window ကတော့ StatusBar မပါတဲ့ size ပါ screen ကတော့ StatusBar ပါပြီးသားကို size ပါအဲ့ Dimensions api ကို သုံးပြီးတော့ မှ size တွေကို media query လို မျိုချိန်ထားလို့ ရပါတယ် 
+
+orientation တွေ ကို လည်း app.json file ထဲ မှာ ပြောင်းလည်းပေးလို့ ရပါတယ် default လို orientation ထားထားရင်တော့ portrait ရော lanscape ရောရပါတယ် ဖုန်းဆောင်လိုက်ရင်လိုက်ပြီးတော့ ပြောင်းလည်းသွားမှာပါ portrait ပဲထားခြင်တာတို့ lanscape ပဲထားခြင်တာ တို့ ပဲလည်းလုပ်လို့ ရပါတယ်
+
+orientation အလိုက် responsive size တွေကို ထိန်းတဲ့ အခါ မှာတော့ Dimensions Api ကို သုံးလို့ မရတော့ ပြဘူး သူက Lock ဖြစ်နေတဲ့ အတွက်ကြောင်မို့လို့ user ပထမဆုံဖွင့်လိုက်တဲ့ Screen ရဲ့ Width နဲ့ Height တို့ကို ပဲ ပြပေးပါတယ် Dynamic Diamation ကို သုံးခြင်ရင်တော့ useWindowDimensions ကို သုံးလို့ ရပါတယ် သူကတော့ Dynamic Diamation ကို တွက်ပေးမှာဖြစ်ပါတယ် ဒါကြောင် user Screen lock အခြေအနေ responsive ကို တွက်ခြင်ရင်တော့ Dimensions API ကအဆင်ပြေပါတယ် orientation လို မျိုးတွက်မယ်ဆို ရင်တော့ useWindowDimensions ကို သုံးလို့ ရပါတယ်
+
+orientation ပြောင်းလိုက်တဲ့ အခါ ကြရင်တော့ Android မှာ Keyboard ရိုက်တဲ့ နေရာတွေ က အဆင်ပြေနေပေမဲ့ IOS မှာ ကြတော့ Keyboard ပြန်ပိတ်လို့ မရတာတို့ Keyboard ဖွင်လိုက်ရင် ကျန်တဲ့ contant တွေရဲ့ နေရာကို warp နေတာတို့ ကို မရှိစေဖို့ကိုတော့ React Native ကပေးထားတဲ့ KeyboardAvoidingView နဲ့ ScrollView ကို တွဲ သုံးလို့ ရပါတယ် သူတို့ နှစ်ခု လုံးကတော့ flex 1 ထားမှ အဆင်ပြေစေမှာ ပါပြီးတော့ KeyboardAvoidingView မှာ ပါတဲ့ behavior ကတော့ height padding position ဆို ပြီးတော့ ပေးလို့ ရပါတယ် position ကတော့ Keyboard ထွက်လာရင် ကျန် contant တွေအပေါ်ကို တတ်သွားတဲ့ ဟာကို ရမှာ ဖြစ်ပြီးကျန်တာတွေကတော့ ရမှာ မဟုတ်ပါဘူး

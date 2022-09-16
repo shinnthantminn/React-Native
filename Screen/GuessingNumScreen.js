@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { View, StyleSheet, Alert, FlatList } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Alert,
+  FlatList,
+  useWindowDimensions,
+} from "react-native";
 import GuessNumber from "../Components/Other/GuessNumber";
 import Title from "../Components/Other/Title";
 import PrimaryButton from "../Components/Button/PrimaryButton";
@@ -26,6 +32,8 @@ const GuessingNumScreen = ({ numberChange, onGameOver, onCount }) => {
   const [guessNumber, setGuessNumber] = useState(initialNumber);
   const [roundNumber, setRoundNumber] = useState([initialNumber]);
 
+  const { width, height } = useWindowDimensions();
+
   useEffect(() => {
     if (guessNumber === numberChange) {
       onGameOver();
@@ -43,7 +51,8 @@ const GuessingNumScreen = ({ numberChange, onGameOver, onCount }) => {
       (direction === "greater" && guessNumber > numberChange)
     ) {
       Alert.alert("Don't Lie", "လီးလား...", [
-        { text: "sorry", style: "cancel" },
+        { text: "sorry", style: "default" },
+        { text: "Lee ko Lee Lar", style: "destructive" },
       ]);
       return;
     }
@@ -60,8 +69,8 @@ const GuessingNumScreen = ({ numberChange, onGameOver, onCount }) => {
     onCount(roundNumber.length);
   };
 
-  return (
-    <View style={style.screen}>
+  let contant = (
+    <>
       <Title>Opponent's Guess</Title>
       <GuessNumber number={guessNumber} />
       <Card>
@@ -79,8 +88,35 @@ const GuessingNumScreen = ({ numberChange, onGameOver, onCount }) => {
           </View>
         </View>
       </Card>
+    </>
+  );
+
+  if (width > 500) {
+    contant = (
+      <>
+        <GuessNumber number={guessNumber} />
+        <View style={style.btnContainer}>
+          <View style={style.innerBtnContainer}>
+            <PrimaryButton onPress={GuessNextNumber.bind(this, "lower")}>
+              <Ionicons name="md-remove" size={24} color="white" />
+            </PrimaryButton>
+          </View>
+          <View style={style.innerBtnContainer}>
+            <PrimaryButton onPress={GuessNextNumber.bind(this, "greater")}>
+              <Ionicons name="md-add" size={24} color="white" />
+            </PrimaryButton>
+          </View>
+        </View>
+      </>
+    );
+  }
+
+  return (
+    <View style={[style.screen, { paddingTop: width > 400 ? 20 : 40 }]}>
+      {contant}
       <View style={style.listContainer}>
         <FlatList
+          alwaysBounceVertical={false}
           data={roundNumber}
           renderItem={(data) => (
             <RoundList
@@ -102,6 +138,7 @@ const style = StyleSheet.create({
     paddingTop: 40,
     flex: 1,
     padding: 24,
+    alignItems: "center",
   },
   btnContainer: {
     flexDirection: "row",
