@@ -1,0 +1,46 @@
+Navigation တစ်ခု နဲ့ တစ်ခု ခုန်ဖို့ ကို react native navigator ဆို တဲ့ lib ကိုသုံးလို့ရပါတယ် သူ့ကိုသုံးမယ် ဆို ရင်တော့ packages တွေ အပြင်လို အပ်တဲ့ packages တွေကို down ရပါတယ် သူမှာ mobile အတွက် သတ်မှတ်ထားတဲ့ Stack ရယ် Native Stack ရယ် ဆို ပြီးတော့ ရှိပါတယ် တခြာ Mobile native Navigator တွေရှိပါသေးတယ် သူတို့ ကသူတို့နဲ့ သတ်ဆိုင်ရာ package တွေနဲ့ သူတို့ပါ NativeStack ကိုသုံးမယ် ဆို ရင် တော့ NativeStack Lib ကို Down ပြီးတော့ NativeStack ကပါတဲ့ createNativeStackNavigator ကို instance ဆောက်ရပါတယ် react-navigation/native ကပါတဲ့ NavigationContainer နဲ့ warp လုပ်လိုက်ပါ ပြီးတော့ instances တည်ဆောက်ထားတဲ့ ကောင်ထဲကမှ 
+
+  <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name={"MealCategory"} component={CategoriesScreen} />
+        </Stack.Navigator>
+  </NavigationContainer> 
+
+အဲ့လို တည်ဆောက်လိုက်ပါ react-router-dom နဲ့ အတူတူပါပဲ
+
+နောက်ပြီး Screen နှစ်ခုကို switch လုပ်ခြင်ရင်တော့ ရိုးရှင်းပါတယ် ဘာကြောင့်လည်းဆိုတော့ NavigationContainer ထဲ ကကောင်တွေ ကို navigation ဆို တဲ့ props ရှိပါတယ် 
+အဲ့ကောင်က နေမှ Navigation.navigator ဆ method နဲ့ ကို ပို့ခြင်တဲ့ Screen name ကို permeter အနေနဲ့ ထည့်ပေးလိုက်ရမှာ
+
+အပေါ်ဆုံးမှာ ရေးတဲ့ ကောင်က အရင်ပေါ်မှာ ပါ screenhandlePress
+screen register မတင်ထားတဲ့ screen တွေမှာ navigation တို့ route တို လို props တွေ ရမှာ မဟုတ်ပါဘူး ဒီလို အခြေအနေမျိုးတွေမှာ react native navigate ကနေ provite ပေးတဲ့ useNavigation ကို သုံးပြီး navigation props လိုမျိုးလုပ်လို့ ရပါတယ် data တွေ ယူတဲ့ route လည်းထိုနည်နဲ့ အတူတူပါပဲ useRoute ဆို တဲ့ကောင်ကို ALTERNATIVE သုံးလို့ရပါတယ် ပြီးတော့ register မတင်ထားတဲ့ nested component တွေမှာ data တွေကို လှန်ယူလို့ ရသွားပါပြီး
+
+Image component မှာ online က ပုံတွေထည့်ခြင်တယ် ဆို ရင် တော့ source မှာ {{}} နဲ့ uri ဆို ပြီထည့် ပေးလို့ ရပါတယ် ပြီတော့ online က ပုံတွေ က Width တွေ Height တွေ မရှိတာ ကြောင့် ကို တိုင်ပေးရပါတယ် Local ကပုံတွေက ပေးစရာမလိုပါပဲ 
+
+header မှာ ရှိတဲ့ ကောင်တွေကို config လုပ်ခြင်ရင် တော့ register လုပ်တဲ့နေတရာ ရဲ့ option မှာ config လုပ်လို့ ရပါတယ် title ပြောင်ခြင်ရင် option title မှာ ပြောင်းလို့ ရပါတယ် တစ်ခြားဟာတွေလည်း ဉပမာ headerStyle ဆို တဲ့ props ဆိုရင်တော့ header backgoundColor ကို ပြောင်လည်းနိုင်မှာ ပါ headerTintColor properties ဆို ရင်တော့ header ထဲ မှာ ရှိတဲ့ စာ အရောင်တွေကို ပြောင်လို့ ရမှာပါ contentStyle ဆို ရင်တော့ navigator ကိုသုံးလိုက်လို့ default ဖြစ်နေတဲ့ backgoundColor အပြင် တစ်ခြား main screen style တွေပါပြင်လို့ ရပါသေးတယ်
+
+Navigation တွေကို Dynamic style ပြောင်းလည်းဖို့ဆို ရင်တော့ option props ပေးတဲ့ အခါမှာ Callback function အနေနဲ့ ပေးလို့ ရပါတယ် ဒီလိုပါ
+
+
+<Stack.Screen
+            name={"Overview"}
+            component={InnerCategories}
+            options={({ route, navigation }) => {
+              return {
+                title: route.params.categoryId,
+              };
+            }}
+/>
+
+ဒီလို လုပ်တာ ကို ရှင်းရမယ် ဆို ရင်တော့ option ကလည်း route တို့ navigation တို့လို register တင်မှ ရတယ် ကောင်တွေကို လက်ခွရရှလို ရပါတယ် 
+ဒါမှ မဟုတ် component ထဲ မှာ ပဲ option တွေကို ပြောင်းလည်းလို့ရပါတယ် အဲ့လို ပြောင်းခြင်ရင်တော့ register ကပေးတဲ့ props ဖြစ်တဲ့ navigation ရဲ့
+setOptions က ပြောင်လို့ ရပါတယ် ဒါပေမဲ့ အဲ့လိုလုပ်ရင် useLayoutEffect ကိုလိုအပ်ပါတယ် useEffect ကြတော့ vertiual dom ကို ချိတ်ဆက်ပြီမှ လုပ်တာ ကြောင် နှေနိုင်ပါတယ် useLayoutEffect က ချိတ်မဆပ်ခင်အလုပ်လုပ်တာ ကြောင်ပိုမြန်နိုင်ပါတယ်
+
+ useLayoutEffect(() => {
+    navigation.setOptions({
+      title: Category.title,
+    });
+  }, [CateId]); 
+
+header မှာ နောက်ထပ် Element တွေထည့်ခြင်လို့ ရှိရင် options props မှာ ပါတဲ့ headerRight နဲ့ headerLeft ဆို ပြီ properties တွေကို မှာ components တွေထပ်ထည့်ပြီးလုပ်လို့ရပါတယ်
+
+Linking ဆို တဲ့ Component ကို သုံးပြီးတော့ လည်း Browser မှာ ဖွင့်တာတွေလုပ်လို့ ရပါတယ်
