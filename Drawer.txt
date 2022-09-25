@@ -1,0 +1,13 @@
+Drawer ကလည်း Stack လိုပါပဲ ဒါပေမဲ့ သူက stepUp လုပ်တဲ့နေရာမှာ နည်းနည်းတိုင်ပတ်ပါတယ် reanimated lib ကြောင့်ပါ
+
+ကျန်တောတွေကတော့ Stack နဲ့ အတူတူပါပဲ option လုပ်တဲ့ အခါမှာ လည်း headerStyle တို့ headerTintColor တို့ပေးလို့ ရပါတယ်
+
+drawerStyle ကတော့ drawer တစ်ခု လုံရဲ့ style သတ်မှတ်ပေးတာပါ drawerActiveBackgroundColor ကတော့ active ဖြစ်တဲ့ ကောင်ရဲ့ background color 
+
+ကို ချိန်းတာပါ drawerActiveTintColor နဲ့ drawerInactiveTintColor တို့လည်းရှိပါတယ် drawerLabel ကတော့ Drawer မှာ ရှိတဲ့ စာကို ချိန်တာပါ Drawer မှာ
+
+icons တွေထက်ထည့်ခြင်ရင်တော့ drawerIcon မှာ component တစ်ခု udk return ပြန်ပေးလိုက်ရင်ရပါပြီ အဲ့ လို return ပြန်တဲ့ အခါမှာလည်း သူ့ drawer က  color, size, focused 
+
+တွေကို props destructuring နဲ့ ယူလို့ ရပါတယ် ပြီးတော့ stack အတိုင်းပဲ register တင်ထားတဲ့ component တွေမှာ navigation နဲ့ route ကို ယူလို့ ရပါတယ် သူတို့ ကနေမှ တဆင့် 
+
+stack လိုပဲ လုပ်လို့ရပါတယ် ပြီးတော့ navigation က နေပြီး toggleDrawer နဲ့လည်း drawer အဖွင့် အပိတ်လုပ်လို့ရပါတယ်
