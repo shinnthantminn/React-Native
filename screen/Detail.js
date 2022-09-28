@@ -12,21 +12,36 @@ import Subtitle from "../components/Subtitle";
 import List from "../components/List";
 import { MEALS } from "../data/dummyData";
 import IconButton from "../components/IconButton";
+import { useSelector, useDispatch } from "react-redux";
+import { useContext } from "react";
+import { FavoriateContext } from "../store/context/FavoriateContext";
+import { addFavoriate, removeFavoriate } from "../store/redux/favoriate";
 
 const Detail = ({ route, navigation }) => {
+  // const { addFavoriate, ids, removeFavoriate } = useContext(FavoriateContext);
+  const { ids } = useSelector((state) => state.favoriateMeals);
+  const dispatch = useDispatch();
+
   const id = route.params.mealID;
+
+  const conditions = ids.includes(id);
 
   const data = MEALS.find((i) => i.id === id);
 
   const handlePress = () => {
+    conditions
+      ? dispatch(removeFavoriate({ id }))
+      : dispatch(addFavoriate({ id }));
     navigation.popToTop();
   };
+
+  console.log(ids);
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
         <IconButton
-          name="md-exit-outline"
+          name={conditions ? "star" : "star-outline"}
           onPress={handlePress}
           color="white"
           size={24}

@@ -7,7 +7,11 @@ import FavScreen from "./screen/FavScreen";
 import * as React from "react";
 import Detail from "./screen/Detail";
 import { Ionicons } from "@expo/vector-icons";
+import FavoriateContextProvider from "./store/context/FavoriateContext";
 import { NavigationContainer } from "@react-navigation/native";
+
+import { Provider } from "react-redux";
+import { store } from "./store/redux/store";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -52,23 +56,25 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: { backgroundColor: "#351401" },
-            headerTintColor: "white",
-            contentStyle: { backgroundColor: "#3f2f25" },
-          }}
-        >
-          <Stack.Screen
-            name={"MealCategory"}
-            options={{ headerShown: false }}
-            component={DrawerContainer}
-          />
-          <Stack.Screen name={"Overview"} component={InnerCategories} />
-          <Stack.Screen name={"Detail"} component={Detail} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: { backgroundColor: "#351401" },
+              headerTintColor: "white",
+              contentStyle: { backgroundColor: "#3f2f25" },
+            }}
+          >
+            <Stack.Screen
+              name={"MealCategory"}
+              options={{ headerShown: false }}
+              component={DrawerContainer}
+            />
+            <Stack.Screen name={"Overview"} component={InnerCategories} />
+            <Stack.Screen name={"Detail"} component={Detail} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
     </>
   );
 }
