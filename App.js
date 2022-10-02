@@ -4,19 +4,29 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import CategoriesScreen from "./screen/CategoriesScreen";
 import InnerCategories from "./screen/InnerCategories";
 import FavScreen from "./screen/FavScreen";
-import * as React from "react";
+import { useEffect } from "react";
 import Detail from "./screen/Detail";
 import { Ionicons } from "@expo/vector-icons";
 import FavoriateContextProvider from "./store/context/FavoriateContext";
 import { NavigationContainer } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { store } from "./store/redux/store";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const DrawerContainer = () => {
+  const { ids } = useSelector((state) => state.favoriateMeals);
+
+  useEffect(() => {
+    (async () => {
+      const data = await AsyncStorage.getItem("Fav");
+      console.log(data);
+    })();
+  }, []);
+
   return (
     <Drawer.Navigator
       useLegacyImplementation={true}

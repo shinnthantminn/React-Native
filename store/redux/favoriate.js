@@ -8,7 +8,7 @@ const favoriateSlicer = createSlice({
   name: "favoriteMeals",
   initialState,
   reducers: {
-    addFavoriate: (state, action) => {
+    addFavoriate: async (state, action) => {
       state.ids = [...state.ids, action.payload.id];
     },
     removeFavoriate: (state, action) => {

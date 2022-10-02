@@ -44,3 +44,10 @@ setOptions က ပြောင်လို့ ရပါတယ် ဒါပေမ
 header မှာ နောက်ထပ် Element တွေထည့်ခြင်လို့ ရှိရင် options props မှာ ပါတဲ့ headerRight နဲ့ headerLeft ဆို ပြီ properties တွေကို မှာ components တွေထပ်ထည့်ပြီးလုပ်လို့ရပါတယ်
 
 Linking ဆို တဲ့ Component ကို သုံးပြီးတော့ လည်း Browser မှာ ဖွင့်တာတွေလုပ်လို့ ရပါတယ်
+
+
+// presentation
+
+ပြီးတော့ navigator ရဲ့ Option မှာ presentation ဆို တဲ့ ကောင်က တော့ navigation ထွက်လာမဲ့ mode ကို ပြောင်းလို့ ရပါတယ် IOS အတွက် ပဲ ရပါတယ်
+
+model တို့ ဘာတို့ လို modes တွေပါရပါတယ်
