@@ -1,0 +1,16 @@
+// native package
+
+native device တွေ အတွက် native device package တွေ ရှိပါတယ် camera package , Location package , storage package 
+
+ဆို ပြီရှိပါတယ် image အတွက် ဆို ရင် တော့ camera package သုံလို့ ရသလိုပဲ imagePicker lib ကိုလည်းသုံလို့ ရပါတယ် image picker အတွက်လို အပ်တဲ့ 
+
+permission တွေကို တော့ app.json မှာ ဝင်ရေးပေးရပါတယ် photo ယူရင် photo အတွက်ယူပြီးတော့ image ယူရင် image အတွက်ယူရမှာပဲ ဖြစ်ပါတယ်
+
+// image picker 
+
+ပုံတွေက ရယူဖို့ အတွက် သုံးပါတယ် camera ဖွင်ပြီ ပုံရိုက်မှာ ဖြစ်တဲ့ အတွက် ကြောင့် image picker lib ထဲကနေပြီးတော့ launchCameraAsync ဆို တဲ့ method ကို ယူပြီးတော့ သုံးပါ့မယ် သူက async method ဖြစ်တဲ့ အတွက် သူထဲ မှာလည်း camera နဲ့ ပတ်သတ်တဲ့ config တွေကို ရေးပေးရပါတယ် config option တွေကတော့ အများကြီးရှိပါတယ် 
+
+allowsEditing ကို true ထားလိုက်ရင် camera ရိုက်ပြီးသားကို editing လုပ်ပိုင်ခွင်ရမှာဖြစ်ပါတယ်
+aspect ကိုလည်း သတ်မှတ်ထားလို့ ရပါသေးတယ် 
+quality ကိုလည်းလျော့ချပြီးတော့ ထုတ်လို့ လည်းရပါတယ် image picker ကတော့ android မှာ အဆင်ပြေပေမဲ့ ios မှာ တော့ permission error တွေရှိနိုင်ပါတယ်
+

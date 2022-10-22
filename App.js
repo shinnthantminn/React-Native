@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// Screen
+import { AddPlace, DetailPlace, AllPlace, Map } from "./Screen";
 
-export default function App() {
+// navigation
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import IconButton from "./Components/ui/IconButton";
+const Stack = createNativeStackNavigator();
+
+// color variable
+import { Colors } from "./constant/color";
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: { backgroundColor: Colors.primary500 },
+          headerTintColor: Colors.primary50,
+          contentStyle: { backgroundColor: Colors.primary800 },
+        }}
+      >
+        <Stack.Screen
+          name="All Place"
+          options={({ navigation }) => ({
+            headerRight: ({ tintColor }) => (
+              <IconButton
+                name="add"
+                color={tintColor}
+                size={26}
+                onPress={() => navigation.navigate("Add Place")}
+              />
+            ),
+          })}
+          component={AllPlace}
+        />
+        <Stack.Screen name="Add Place" component={AddPlace} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
