@@ -1,11 +1,11 @@
-import { v4 as uid } from "uuid";
+import uuid from "react-native-uuid";
 
-class Place {
-  constructor(title, imageUrl, location, address) {
+export class Place {
+  constructor(title, imageUrl, location) {
     this.title = title;
     this.imageUrl = imageUrl;
-    this.location = location;
-    this.address = address;
-    this.id = uid();
+    this.location = { lag: location.lat, lng: location.lng };
+    this.address = location.address;
+    this.id = uuid.v4();
   }
 }

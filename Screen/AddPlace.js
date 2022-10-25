@@ -1,10 +1,15 @@
 import { View, Text } from "react-native";
 import PlaceForm from "../Components/Place/PlaceForm";
 
-const AddPlace = () => {
+const AddPlace = ({ navigation }) => {
+  const handleCreatePlace = (place) => {
+    console.log(place);
+    navigation.navigate("All Place", { place: place });
+  };
+
   return (
     <View className="flex-1">
-      <PlaceForm />
+      <PlaceForm handleCreate={handleCreatePlace} />
     </View>
   );
 };

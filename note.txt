@@ -12,5 +12,91 @@ permission တွေကို တော့ app.json မှာ ဝင်ရေး
 
 allowsEditing ကို true ထားလိုက်ရင် camera ရိုက်ပြီးသားကို editing လုပ်ပိုင်ခွင်ရမှာဖြစ်ပါတယ်
 aspect ကိုလည်း သတ်မှတ်ထားလို့ ရပါသေးတယ် 
-quality ကိုလည်းလျော့ချပြီးတော့ ထုတ်လို့ လည်းရပါတယ် image picker ကတော့ android မှာ အဆင်ပြေပေမဲ့ ios မှာ တော့ permission error တွေရှိနိုင်ပါတယ်
 
+quality ကိုလည်းလျော့ချပြီးတော့ ထုတ်လို့ လည်းရပါတယ် image picker ကတော့ android မှာ အဆင်ပြေပေမဲ့ ios မှာ တော့ permission error တွေရှိနိုင်ပါတယ်  ပြီတော့ android မှာ Expo နဲ့စမ်းလို့မရပါဘူး
+
+
+=> ios
+
+Ios မှာဆို ရင်တော့ Permission လို အပ်သေးတယ် ဒါကြောင့်လည်း image picker lib က ကျွန်တော် တို့ ကို Provide ပေးထားတဲ့ useCameraPermission ဆိုတဲ့ Hook ကို သုံရပါတယ် သူ ကမှာ Permission ရှိလားမရှိဘူးလားနဲ့ Permission Request လုပ်လို့ရပါတယ်
+
+const [cameraInfo, requestCamera] = useCameraPermissions();
+
+Permission ရှိလားမရှိဘူးလားကို cameraInfo.status နဲ့ image picker lib status က provide ပေးထားတဲ့ PermissionStatus နဲ့ တိုက်စစ်ရပါတယ်
+
+ if (cameraInfo.status === PermissionStatus.UNDETERMINED) {
+      const premissionRequest = await requestCamera();
+      return premissionRequest.granted;
+}
+
+if (cameraInfo.status === PermissionStatus.DENIED) {
+      Alert("Insufficent Permission", "You need to permission for Open Camera");
+      return false;
+}
+
+return true;
+
+မရှိရင်တော့ requestCamera Method နဲ့ request လုပ်လို့ရပါတယ် return ကို တော့ request လုပ်ပြီးရင်  premissionRequest.granted နဲ့ ပြန်ပေးရပါတယ် သူကတော့ true ပြန်ပေးရပါတယ်
+
+တကယ် PermissionStatus.DENIED ဖြစ်နေရင်တော့ ဖြစ်နေတဲ့ အကြောင်းနဲ့ return false ပြန်ပေးရပါတယ် တကယ် လို Permission ရှိနေရင်တော့ return true ပြန်ပေးပါမယ်
+
+const verifyCamera = async () => {
+    if (cameraInfo.status === PermissionStatus.UNDETERMINED) {
+      const premissionRequest = await requestCamera();
+      return premissionRequest.granted;
+    }
+
+    if (cameraInfo.status === PermissionStatus.DENIED) {
+      Alert("Insufficent Permission", "You need to permission for Open Camera");
+      return false;
+    }
+
+    return true;
+  };
+
+async function handlePress() {
+    const permission = await verifyCamera();
+
+    if (!permission) {
+      return;
+    }
+
+    const data = await launchCameraAsync({
+      allowsEditing: true,
+      aspect: [16, 9],
+      quality: 0.5,
+    });
+
+    console.log(data);
+}
+
+code အပြည့် အဆုံ 
+
+// Location
+
+Location လည်းပဲ Image Picker လို ပါပဲ​ သူကတော့ android emulator တွေမှာ မရပါဘူး
+
+image Picker လိုပါပဲ Method လေးတွေပဲ နည်းနည်းကွဲသွားတာပါ getCurrentPositionAsync useForegroundPermissions PermissionStatus ရယ်ပါ
+
+Location package ကို သုံပြီးတော့ lat lng တွေရပါတယ် ဒီကနေမှာ static map image တွေယူတာ ပါလုပ်နိုင်ပါတယ် 
+
+static map image တွေကိုတော့ https://www.geoapify.com/static-maps-api ကနေယူလို့ ရပါတယ်
+
+
+// Map 
+
+Map View  လေးပွင်ခြင်ရင် တော့ react native Map ဆို တဲ့ Lib ကို သုံလို့ ရပါတယ် အဲ့ ကောင်က expo ကော ClI ကော ရပါတယ်
+
+သူရဲ့ initialRegion Prop မှာ လည်း lat lng နဲ့ Zoom တွေထည့်ပြီးတော့ Map ပြခိုင်လို့ရပါတယ် MapView Components  ရှိပါတယ် သူကမှ
+
+Map ပြလို့ ရပြီး User Pick လိုက်တဲ့ကောင်တွေကို picker အနေနဲ့ ပြဖို့ ဆိုရင်တော့ Marker ဆို တဲ့ componenst ကို သုံရပါတယ်
+
+// navigation
+
+navigation တွေ goBack ဆိုရင်တော့ အရင်ပြပြီးသား route တွေကို ပြန်လာရင်တော့ useEffect တွေက reRender လုပ်မှာ မဟုတ်ပါဘူး
+
+ဘာကြောင့်လည်းဆိုတော့ သူကနောက်မှာ အလုပ်လုပ်နေပြီပြန်အစားထိုးလိုက်တာ ကြောင့်ပဲဖြစ်ပါတယ် ပြီးတော့ အဲ့ ဒါကို သိရဖို အတွက်ကတော့ 
+
+@react-navigation/native က provide ပေးထားတဲ့ useIsFocused() hook ကို သုံးပြီးတော့ ဘယ် screen ကို initial ပြနေလည်းဆိုတာကို
+
+boolean နဲ့သိနိုင်ပါတယ်

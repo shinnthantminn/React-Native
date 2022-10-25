@@ -13,8 +13,9 @@ const PlaceList = ({ place }) => {
   }
 
   return (
-    <View>
+    <View className="flex-1">
       <FlatList
+        alwaysBounceVertical={false}
         data={place}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <PlaceItem data={item} />}

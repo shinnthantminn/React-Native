@@ -35,6 +35,7 @@ const App = () => {
           component={AllPlace}
         />
         <Stack.Screen name="Add Place" component={AddPlace} />
+        <Stack.Screen name="map" component={Map} />
       </Stack.Navigator>
     </NavigationContainer>
   );
